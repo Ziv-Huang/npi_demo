@@ -22,7 +22,7 @@ def feature_generator(face_data):
 def data_processor(face_data, range_index):
     face_data = face_data.drop(['ElderID'], axis=1)
     face_data_week = face_data.copy()
-    max_index = np.int(face_data_week.columns.str.encode('utf-8')[-1])+1
+    max_index = np.int64(face_data_week.columns.str.encode('utf-8')[-1])+1
     for index in range(max_index):
         face_data_week[str(index)] = np.where(face_data_week[str(index)].apply(lambda x : math.isnan(x)),1,0)
     # determine first or second week
